@@ -1,0 +1,171 @@
+
+{%load static%}
+
+<style>
+      body {
+     
+    margin: 0; /* Remove default body margin */
+    padding: 0; /* Remove default body padding */
+    background-image: url('{% static 'bg2.jpg' %}'); /* Replace 'background.jpg' with the path to your background image */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+    height: auto /* Make sure the background covers the full viewport height */
+}
+</style>
+<!-- bootstrap css -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="{%static 'style.css'%}">
+<!-- google font -->
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+<h1 style="margin-top: 30px;" class="text-center fs-4">Donation Form</h1>
+    <form method="POST" style="max-width: 700px;" id="signUpForm" >
+      {%csrf_token%}
+        <!-- start step indicators -->
+        <div class="form-header d-flex mb-4" >
+            <span class="stepIndicator">Basic Details</span>
+            <span class="stepIndicator">Donation</span>
+            <span class="stepIndicator">Medical Conditions</span>
+        </div>
+        <!-- end step indicators -->
+    
+        <!-- step one -->
+        <div class="step">
+            <p class="text-center mb-4">Enter your details</p>
+            <div class="mb-3">
+              <label for="Name">Name:</label>
+              <input type="text" style="width: 100%;" placeholder="Enter Name" oninput="this.className = ''" name="Name" required>
+            </div>
+            <div class="mb-3">
+              <label for="Birthdate">Date of Birth:</label>
+              <input type="date" style="width: 100%;" placeholder="Birthdate" oninput="this.className = ''" name="Birthdate" required>
+            </div>
+            <div class="mb-3">
+              <label for="Gender">Gender:</label>
+              <input type="text" style="width: 100%;" placeholder="Enter Gender" oninput="this.className = ''" name="Gender" required>
+            </div>
+            <div class="mb-3">
+              <label for="Nationality">Nationality:</label>
+              <input type="text" style="width: 100%;" placeholder="Enter Nationality" oninput="this.className = ''" name="Nationality" required>
+            </div>
+            <div class="mb-3">
+              <label for="Bloodgroup">Blood Group:</label>
+              <input type="text" style="width: 100%;" placeholder="Enter Blood Group" oninput="this.className = ''" name="Bloodgroup" required>
+            </div>
+            <div class="mb-3">
+              <label for="Mobilenumber">Mobile Number:</label>
+              <input type="text" style="width: 100%;" placeholder="Enter Mobile Number" oninput="this.className = ''" name="Mobilenumber" required>
+            </div>
+            <div class="mb-3">
+                <label for="Email">Email:</label>
+                <input type="email" style="width: 100%;" placeholder="Enter Email Address" oninput="this.className = ''" name="Email" required>
+            </div>
+            <div class="mb-3">
+              <label for="address">Address:</label>
+              <input type="text" style="width: 100%;" placeholder="Enter Address" oninput="this.className = ''" name="address" required>
+            </div>
+            <div class="mb-3">
+              <label for="pancard">Pan Card Number:</label>
+              <input type="text" style="width: 100%;" placeholder="Enter Pan Card Number" oninput="this.className = ''" name="pancard" required>
+            </div>
+            <div class="mb-3">
+              <label for="aadharcard">Aadhar Card Number:</label>
+              <input type="text" style="width: 100%;" placeholder="Enter Aadhar Card Number" oninput="this.className = ''" name="aadharcard" required>
+            </div>
+            <div class="mb-3">
+                <label for="news">Where did you hear about us ? :</label>
+                <input type="text" style="width: 100%;" placeholder="Enter Details" oninput="this.className = ''" name="news" required>
+            </div>
+        </div> 
+    
+        <!-- step two -->
+        <div class="step">
+          <p class="text-center mb-4">Choose your Interest</p>
+          <div class="mb-3">
+              <label for="interest">Are you willing to donate ? :</label><br><br>
+              <input type="radio" name="interest" onclick="showBeforeDeath()" style="width: 40px;" value="Before Dead">Before Dead
+              <input type="radio" name="interest" onclick="showAfterDeath()" style="width: 40px;" value="After Dead" >After Dead
+          </div>
+          
+          <div  id="step2" style="display: none;">
+              <p class="text-center mb-4">Before Death Donation Details</p>
+              <div class="mb-3">
+                  <label for="beforedeath">Donate (Blood/Kidney/Skin)</label>
+                  <input type="text" style="width: 100%;" placeholder="Enter Donation Details"  name="beforedeath" value="Enter Data" >
+              </div>
+          </div>
+      
+          <div  id="step3" style="display: none;">
+              <p class="text-center mb-4">After Death Organ Details</p>
+              <div class="mb-3">
+                  <label for="afterdeath">Donate (Heart/Brain/Liver/Eye)</label>
+                  <input style="width: 100%;" type="text" placeholder="Enter Donation Details" oninput="this.className = ''" name="afterdeath" value="Enter Data" >
+              </div>
+          </div>
+      </div>
+         <!-- step four -->
+        <div class="step">
+            <p class="text-center mb-4">Medical Checkup Form</p>
+            
+            <div class="mb-3">
+              <label for="question1">Do you have any allergies ? :</label><br>
+              <input type="radio" name="question1" style="width: 40px;" value="Yes">Yes
+              <input type="radio" name="question1" style="width: 40px;" value="No">No
+            </div>
+            <div class="mb-3">
+              <label for="question2">Have you had any recent surgeries or medical procedures ? :</label><br>
+              <input type="radio" name="question2" style="width: 40px;" value="Yes">Yes
+              <input type="radio" name="question2" style="width: 40px;" value="No">No
+            </div>
+            <div class="mb-3">
+              <label for="question3">Are you currently taking any medications ? :</label><br>
+              <input type="radio" name="question3" style="width: 40px;" value="Yes">Yes
+              <input type="radio" name="question3" style="width: 40px;" value="No">No
+            </div>
+            <div class="mb-3">
+              <label for="question4">Do you smoke or use any recreational drugs ? :</label><br>
+              <input type="radio" name="question4" style="width: 40px;" value="Yes">Yes
+              <input type="radio" name="question4" style="width: 40px;" value="No">No
+            </div>
+            <div class="mb-3">
+              <label for="question5">Do you have sugar ? :</label><br>
+              <input type="radio" name="question5" style="width: 40px;" value="Yes">Yes
+              <input type="radio" name="question5" style="width: 40px;" value="No">No
+            </div>
+            <div class="mb-3">
+              <label for="question6">Do you have High Blood Pressure ? :</label><br>
+              <input type="radio" name="question6" style="width: 40px;" value="Yes">Yes
+              <input type="radio" name="question6" style="width: 40px;" value="No">No
+            </div>
+            <div class="mb-3">
+              <label for="question7">Have you ever been hospitalized for a serious medical condition ? :</label><br>
+              <input type="radio" name="question7" style="width: 40px;" value="Yes">Yes
+              <input type="radio" name="question7" style="width: 40px;" value="No">No
+            </div>
+            <div class="mb-3">
+              <label for="question8">Do you have a family history of any hereditary diseases or conditions ? :</label><br>
+              <input type="radio" name="question8" style="width: 40px;" value="Yes">Yes
+              <input type="radio" name="question8" style="width: 40px;" value="No">No
+            </div>
+            <div class="mb-3">
+              <label for="question9">Have you ever been diagnosed with a contagious disease such as hepatits or HIV ? :</label><br>
+              <input type="radio" name="question9" style="width: 40px;" value="Yes">Yes
+              <input type="radio" name="question9" style="width: 40px;" value="No">No
+            </div>
+            <div class="mb-3">
+              <label for="question10">Have you discussed your decision to be an organ donor with your loved ones ? :</label><br>
+              <input type="radio" name="question10" style="width: 40px;" value="Yes">Yes
+              <input type="radio" name="question10" style="width: 40px;" value="No">No
+            </div>
+        </div>
+        <!-- start previous / next buttons -->
+        <div  class="form-footer d-flex">
+            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+            <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+        </div>
+        <!-- end previous / next buttons -->
+    </form>
+    
+    <script src="{%static 'script.js'%}"></script>
+        

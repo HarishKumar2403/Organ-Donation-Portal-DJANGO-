@@ -1,0 +1,69 @@
+{% load static %}
+{%include 'header.html'%}
+{% block content %}
+  
+    <!--Body Content-->
+    <style>
+        input{
+            background-color: white;
+        }
+        label{
+            font-size: larger;
+        }
+    </style>
+    
+    <div id="page-content">
+    	<!--Page Title-->
+    	<div class="page section-header text-center">
+			<div class="page-title">
+                {% if messages %}
+                {% for message in messages %}
+                {%if message.tags == 'success'%}
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    {{ message }} 
+                </div>
+                {%elif  message.tags == 'error'%}
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    {{message}}
+                </div>
+                {%endif%}
+                {% endfor %}
+                {% endif %}
+
+        		<div class="wrapper"><h1 class="page-width">Create an Account</h1></div>
+      		</div>
+		</div>
+        <!--End Page Title-->        
+        <div class="container">
+        	<div class="row">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 main-col offset-md-3">
+                	<div class="mb-4">
+                       <form method="post" action="{%url 'send_otp'%}" id="CustomerLoginForm" accept-charset="UTF-8" class="contact-form">
+                        {%csrf_token%}	
+                          <div class="row">   
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        <label for="PhoneNumber">Phone Number</label>
+                                        <input type="text" name="PhoneNumber" placeholder="PhoneNumber" id="PhoneNumber" autocorrect="off" required>
+                                    </div>
+                                </div>        
+                          </div>
+                          <div class="row">
+                            <div class="text-center col-12 col-sm-12 col-md-12 col-lg-12">
+                                <input type="submit" class="btn mb-3" value="Send Otp" >
+                                
+                            </div>
+                         </div>
+                     </form>
+                    </div>
+               	</div>
+            </div>
+        </div>        
+    </div>
+{%endblock%}
+{%include 'footer.html'%}
+    <!--End Body Content-->
+    
+    

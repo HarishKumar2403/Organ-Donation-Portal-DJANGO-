@@ -1,0 +1,147 @@
+{%load static%}
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<!-- belle/short-description.html   11 Nov 2019 12:43:10 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Organ Donation</title>
+<meta name="description" content="description">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Favicon -->
+<link rel="shortcut icon" href="{%static 'assets/images/favicon.png'%}" />
+<!-- Plugins CSS -->
+<link rel="stylesheet" href="{%static 'assets/css/plugins.css'%}">
+<!-- Bootstap CSS -->
+<link rel="stylesheet" href="{%static 'assets/css/bootstrap.min.css'%}">
+<!-- Main Style CSS -->
+<link rel="stylesheet" href="{%static 'assets/css/style.css'%}">
+<link rel="stylesheet" href="{%static 'assets/css/responsive.css'%}">
+</head>
+<style>
+    body {
+    margin: 0; /* Remove default body margin */
+    padding: 0; /* Remove default body padding */
+    background-image: url('{% static 'bg2.jpg' %}'); /* Replace 'background.jpg' with the path to your background image */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+    height: 100vh; /* Make sure the background covers the full viewport height */
+}
+</style>
+<body class="template-product belle">
+	<div class="pageWrapper">
+        
+        <!--Top Header-->
+        <div class="top-header">
+        <div class="container-fluid">
+            <div class="row">
+            	<div class="col-10 col-sm-8 col-md-5 col-lg-4">                    
+                    <div class="language-dropdown">
+                        <span class="language">English</span>                        
+                    </div>
+                    <p class="phone-no"><i class="anm anm-phone-s"></i> +440 0(111) 044 833</p>
+                </div>
+                <div class="col-sm-4 col-md-4 col-lg-4 d-none d-lg-none d-md-block d-lg-block">
+                	<div class="text-center"><p class="top-header_middle-text">Organ Donation Application </p></div>
+                </div>
+                <div class="col-2 col-sm-4 col-md-3 col-lg-4 text-right">
+                	<span class="user-menu d-block d-lg-none"><i class="anm anm-user-al" aria-hidden="true"></i></span>
+                    <ul class="customer-links list-inline">
+                        {% if request.session.username %}
+                            <li><a href="{%url 'user_logout'%}">Logout</a></li>
+                        {%else%}    
+                            <li><a href="#">India</a></li>
+                        {%endif%}        
+                        {% if request.session.username %}
+                            <li><a href="{%url 'edit_users' id=request.session.user_id %}"> Hi, {{request.session.username}}</a></li>
+                        {%endif%}
+                            
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!--End Top Header-->
+        <!--Header-->
+        <div class="header-wrap animated d-flex">
+            
+            <div class="container-fluid">        
+                <div class="row align-items-center">
+                    <!--Desktop Logo-->
+                    <div class="logo col-md-2 col-lg-2 d-none d-lg-block">
+                        <a href="#">
+                            <img src="{%static 'assets/images/logo.svg'%}" alt="Belle Multipurpose Html Template" title="Belle Multipurpose Html Template" />
+                        </a>
+                    </div>
+                    <!--End Desktop Logo-->
+                    <div class="col-2 col-sm-3 col-md-3 col-lg-8">
+                        <div class="d-block d-lg-none">
+                            <button type="button" class="btn--link site-header__menu js-mobile-nav-toggle mobile-nav--open">
+                                <i class="icon anm anm-times-l"></i>
+                                <i class="anm anm-bars-r"></i>
+                                
+                            </button>
+                        </div>
+                        <!--Desktop Menu-->
+                        <nav class="grid__item" id="AccessibleNav">
+                            <!-- for mobile -->
+                            <ul id="siteNav" class="site-nav medium right hidearrow">
+                                <li class="lvl1 parent megamenu" ><a href="{%url 'home'%}">Home</a></li>                                    
+                                <li class="lvl1 parent megamenu"><a href="{%url 'user_login'%}">Login</a></li>
+                                {% if request.session.username %}
+                                <li class="lvl1 parent megamenu"><a href="{%url 'donation_form'%}">Donation Form</a></li>
+                                {%else%}
+                                <li class="lvl1 parent megamenu"><a href="{%url 'send_otp'%}">Register</a></li>
+                                {%endif%}
+                                <li class="lvl1 parent megamenu"><a href="{%url 'user_admin'%}">Admin Login</a></li>
+                                <li class="lvl1 parent megamenu"><a href="{%url 'Hospital_login'%}">Hospital Login</a></li>
+                                 
+                                     
+                                    
+                                <div class="megamenu style2" style="width: fit-content;margin-left: 800px;">
+                                  <ul class="grid mmWrapper">
+                                      <li class="grid__item one-whole">
+                                         
+                                      </li>
+                                    </ul>
+                              </div>  
+                            </li>                             
+                        </ul>
+                        </nav>
+                        <!--End Desktop Menu-->
+                    </div>
+                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 d-block d-lg-none mobile-logo">
+                        <div class="logo">
+                            <a href="#">
+                                <img src="{%static 'assets/images/logo.svg'%}" alt="Belle Multipurpose Html Template" title="Belle Multipurpose Html Template" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-4 col-sm-3 col-md-3 col-lg-2">
+                        <div class="site-cart">
+                            <a href="#" class="#" title="Cart" style="font-size: 25px;">
+                                <i class="fa fa-hospital-o" style="font-size:36px;"></i>                              
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Header-->
+        <!--Mobile Menu-->
+        <div class="mobile-nav-wrapper" role="navigation">
+		<div class="closemobileMenu"><i class="icon anm anm-times-l pull-right"></i> Close Menu</div>
+        <ul id="MobileNav" class="mobile-nav">
+        	<li class="lvl1 parent megamenu"><a href="#">Home</a></li>        	
+        	<li class="lvl1 parent megamenu"><a href="#">Product <i class="anm anm-plus-l"></i></a> 
+          
+          </li>
+        	<li class="lvl1 parent megamenu"><a href="#">About Us</a></li>
+        	
+        
+        
+      </ul>
+	</div>
+
+        <!--End Mobile Menu-->

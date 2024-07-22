@@ -1,0 +1,50 @@
+{%include 'header.html' %}
+{%load static%}
+{% if messages %}
+                {% for message in messages %}
+                {%if message.tags == 'success'%}
+                <center>
+                    <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    {{ message }} 
+                    </div>
+                </center>
+                {%elif  message.tags == 'error'%}
+                <center>
+                    <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    {{message}}
+                    </div>
+                </center>
+                {%endif%}
+                {% endfor %}
+                {% endif %}
+<!--Home slider-->
+<div class="slideshow slideshow-wrapper pb-section">
+    <div class="home-slideshow">
+        <div class="slide slideshow--medium">
+            <div class="blur-up lazyload">
+                <img class="blur-up lazyload" data-src="{%static 'b3.jpg'%}" src="{%static 'b3.jpg'%}" alt="Outfit of Today" title="Outfit of Today" />
+               
+            </div>
+        </div>
+        <div class="slide slideshow--medium">
+            <div class="blur-up lazyload">
+                <img class="blur-up lazyload"  data-src="{%static 'b6.jpg'%}" src="{%static 'b6.jpg'%}" alt="Accessories" title="Accessories" />
+                
+            </div>
+        </div>
+
+        <div class="slide slideshow--medium">
+            <div class="blur-up lazyload">
+                <img  class="blur-up lazyload"  data-src="{%static 'b5.jpg'%}" src="{%static 'b5.jpg'%}" alt="Accessories" title="Accessories" />
+               
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+<!--End Home slider-->
+
+{%include 'footer.html'%}
